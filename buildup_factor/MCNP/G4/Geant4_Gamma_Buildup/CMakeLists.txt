@@ -1,0 +1,10 @@
+cmake_minimum_required(VERSION 3.16)
+project(GammaBuildup LANGUAGES CXX)
+
+find_package(Geant4 REQUIRED)
+add_executable(gamma_buildup src/gamma_buildup.cc)
+target_link_libraries(gamma_buildup PRIVATE ${Geant4_LIBRARIES})
+target_compile_features(gamma_buildup PRIVATE cxx_std_17)
+if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
+    target_compile_options(gamma_buildup PRIVATE -Wall -Wextra -Wpedantic)
+endif()
